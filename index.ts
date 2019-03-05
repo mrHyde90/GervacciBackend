@@ -1,8 +1,20 @@
 import Server from './classes/server';
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import mongoose from 'mongoose';
+
 
 const server  = Server.instance;
+
+//Connection with mongoose
+mongoose.connect('mongodb+srv://torres:Q9gkAo6tFmr2gSFS@cluster0-ehxpx.mongodb.net/test?retryWrites=true')
+    .then(() => {
+        console.log("Connected to database");
+    })
+    .catch((err) => {
+        console.log(err);
+        console.log("Conexion fallida");
+    });
 
 //Body parser
 server.app.use(bodyParser.urlencoded({extended: true}));
