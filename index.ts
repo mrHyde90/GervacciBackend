@@ -8,7 +8,8 @@ import userRoutes from "./routes/usuario";
 const server  = Server.instance;
 
 //Connection with mongoose
-mongoose.connect('mongodb+srv://torres:Q9gkAo6tFmr2gSFS@cluster0-ehxpx.mongodb.net/test?retryWrites=true')
+//mongoose.connect('mongodb+srv://torres:Q9gkAo6tFmr2gSFS@cluster0-ehxpx.mongodb.net/test?retryWrites=true')
+mongoose.connect('mongodb://a00516283:Neverreal1995@ds213896.mlab.com:13896/gercvacci')
     .then(() => {
         console.log("Connected to database");
     })
