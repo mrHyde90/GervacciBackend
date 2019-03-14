@@ -16,6 +16,6 @@ export default class Server {
     }
 
     start(callback: Function, port: number){
-        this.httpServer.listen(port, callback);
+        this.httpServer.listen(process.env.PORT ||port, callback);
     }
 }
