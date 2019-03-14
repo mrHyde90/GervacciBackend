@@ -25,7 +25,8 @@
     "express": "^4.16.4",
     "jsonwebtoken": "^8.5.0",
     "mongoose": "^5.4.17",
-    "mongoose-unique-validator": "^2.0.2"
+    "mongoose-unique-validator": "^2.0.2",
+    "typescript": "^3.3.3333"
   },
   "devDependencies": {
     "@types/cors": "^2.8.4",
