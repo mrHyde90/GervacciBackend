@@ -2,6 +2,7 @@ import Server from './classes/server';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import mongoose from 'mongoose';
+import userRoutes from "./routes/usuario";
 
 
 const server  = Server.instance;
@@ -26,9 +27,7 @@ server.app.use(cors({
     credentials: true
 }));
 
-server.app.get("/", (req, res) => {
-    res.send("Hola mundo");
-});
+server.app.use("/usuarios", userRoutes);
 
 server.start(() => {
     console.log("Servidor corriendo en el puerto 5000");
