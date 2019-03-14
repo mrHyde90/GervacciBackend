@@ -5,11 +5,9 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm run tsc",
+    "build": "npm run build-ts",
     "build-ts": "tsc",
-    "tsc": "tsc",
-    "postinstall": "npm run tsc",
-    "start": "npm run serve",
+    "postinstall": "npm run build-ts",
     "serve": "node dist/index.js",
     "watch-node": "nodemon dist/index.js",
     "watch-ts": "tsc -w"
