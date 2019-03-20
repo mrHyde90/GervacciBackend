@@ -7,6 +7,7 @@ const empresaSchema = new mongoose.Schema({
     url: {type: String, default: ""}, 
     telefono: {type: String, default: ""},
     email: {type: String, required: true},
+    contraseña: {type: String, required: true},
     direccion: {type: String, required: true }
 });
 
