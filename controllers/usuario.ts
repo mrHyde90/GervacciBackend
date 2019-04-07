@@ -2,6 +2,7 @@ import User from "../models/user";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import {Request, Response} from "express";
+import empresa from "../models/empresa";
 
 // Por defecto el usuario se guarda como esperar
 // Los controladores que el usuario puede hacer
@@ -36,6 +37,30 @@ exports.user_registrarse = async (req: Request, res: Response, next: Function) =
     catch(err) {
         return res.status(500).json({err: err, message: "Usuario no pudo ser salvado"});
     }
+}
+
+exports.obtener_usuario = async (req:Request, res: Response, next: Function) => {
+    try{
+        const userId = req.params.id;
+        const userFind = await User.findById(userId);
+        if(userFind != undefined){
+            res.status(200).json({
+                nombre: userFind.nombre,
+                matricula: userFind.matricula,
+                email: userFind.email,
+                carrera: userFind.carrera
+            });
+        } else{
+            res.status(400).json({
+                message: "Usuario no encontrado"
+            });
+        }
+        
+    }
+    catch(err){
+        return res.status(500).json({err: err, message: "usuario no pudo ser enviado"});
+    }
+    
 }
 
 exports.user_iniciar_sesion = async (req: Request, res: Response, next: Function) => {

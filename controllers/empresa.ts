@@ -39,6 +39,27 @@ exports.empresa_registrarse = async (req: Request, res: Response, next: Function
     }
 }
 
+exports.obtener_empresa = async (req: Request, res:Response, next: Function) => {
+    try{
+        const empresaId = req.params.id;
+        const empresaFind = await Empresa.findById(empresaId);
+        if(empresaFind != undefined){
+            res.status(200).json({
+                nombreEmpresa: empresaFind.nombreEmpresa,
+                telefono: empresaFind.telefono,
+                email: empresaFind.email
+            });
+        }
+        res.status(400).json({
+            message: "Empresa no encontrada"
+        });
+    }
+    catch(err){
+        return res.status(500).json({err: err, message: "Empresa no pudo ser enviada"});
+    }
+    
+}
+
 exports.empresa_iniciar_sesion = async (req: Request, res: Response, next: Function) => {
     try {
         //Si es dispositivo mobile, el token durara 3650 dias, por el contrario si es web, solo 10horas

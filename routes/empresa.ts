@@ -8,4 +8,6 @@ router.post("/iniciar_sesion", EmpresaController.empresa_iniciar_sesion);
 
 router.get("/prueba", EmpresaController.prueba);
 
+router.get("/:id", EmpresaController.obtener_empresa);
+
 export default router;

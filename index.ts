@@ -4,6 +4,7 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import userRoutes from "./routes/usuario";
 import empresaRoutes from "./routes/empresa";
+import proyectoRoutes from "./routes/proyecto";
 
 const server  = Server.instance;
 
@@ -30,6 +31,7 @@ server.app.use(cors({
 
 server.app.use("/usuarios", userRoutes);
 server.app.use("/empresas", empresaRoutes);
+server.app.use("/proyectos", proyectoRoutes);
 
 server.start(() => {
     console.log("Servidor corriendo en el puerto 5000");

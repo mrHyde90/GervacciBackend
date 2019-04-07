@@ -1,4 +1,16 @@
-import mongoose from 'mongoose';
+import mongoose,  {Schema, Document}  from 'mongoose';
+import uniqueValidator from 'mongoose-unique-validator';
+
+export interface IProyecto extends Document{
+    nombreProyecto: string;
+    empresa: {nombreEmpresaa: string, id: mongoose.Schema.Types.ObjectId};
+    descripcion: string;
+    vacantes: Number;
+    duracion: string;
+    puntuaciones: {valor: Number, usuarioID: mongoose.Schema.Types.ObjectId}[];
+    selecciones: {type: mongoose.Schema.Types.ObjectId}[];
+}
+
 
 const proyectoSchema = new mongoose.Schema({
     nombreProyecto: {type: String, required: true},
@@ -8,11 +20,13 @@ const proyectoSchema = new mongoose.Schema({
     },
     descripcion: {type: String, required: true},    
     vacantes: {type: Number, default: 1, required: true}, 
-    duracion: {type: Date, default: Date.now},
+    duracion: {type: String},
     puntuaciones: [{
         valor: {type: Number, enum: [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5], default: 0}, 
         usuarioID: {type: mongoose.Schema.Types.ObjectId, ref: "User", required: true}
-    }]
+    }],
+    selecciones: [{type: mongoose.Schema.Types.ObjectId, ref: "User", required: true}]
 });
 
-export default mongoose.model("Proyectos", proyectoSchema);
+proyectoSchema.plugin(uniqueValidator);
+export default mongoose.model<IProyecto>("Proyectos", proyectoSchema);
