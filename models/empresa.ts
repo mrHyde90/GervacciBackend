@@ -10,6 +10,7 @@ export interface IEmpresa extends Document{
     contraseña: string;
     direccion: string;
     empresa_type: string;
+    giro: string;
 }
 
 const empresaSchema = new Schema({
@@ -20,7 +21,8 @@ const empresaSchema = new Schema({
     email: {type: String, required: true},
     contraseña: {type: String, required: true},
     direccion: {type: String, required: true }, 
-    empresa_type: {type: String, enum: ["Aceptado", "Espera"], default: "Espera"}
+    empresa_type: {type: String, enum: ["Aceptado", "Espera"], default: "Espera"},
+    giro: {type: String, required: true}
 });
 
 empresaSchema.plugin(uniqueValidator);

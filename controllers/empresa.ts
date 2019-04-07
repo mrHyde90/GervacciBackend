@@ -24,7 +24,8 @@ exports.empresa_registrarse = async (req: Request, res: Response, next: Function
                 telefono: req.body.telefono,
                 url: req.body.url,
                 descripcion: req.body.descripcion,
-                direccion: req.body.direccion
+                direccion: req.body.direccion,
+                giro: req.body.giro
             });
             //Salvando el usuario en la base de datos
             const result = await empresa.save();
@@ -47,7 +48,8 @@ exports.obtener_empresa = async (req: Request, res:Response, next: Function) => 
             res.status(200).json({
                 nombreEmpresa: empresaFind.nombreEmpresa,
                 telefono: empresaFind.telefono,
-                email: empresaFind.email
+                email: empresaFind.email,
+                giro: empresaFind.giro
             });
         }
         res.status(400).json({

@@ -9,6 +9,7 @@ export interface IProyecto extends Document{
     duracion: string;
     puntuaciones: {valor: Number, usuarioID: mongoose.Schema.Types.ObjectId}[];
     selecciones: {type: mongoose.Schema.Types.ObjectId}[];
+    recompensas: string;
 }
 
 
@@ -25,7 +26,8 @@ const proyectoSchema = new mongoose.Schema({
         valor: {type: Number, enum: [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5], default: 0}, 
         usuarioID: {type: mongoose.Schema.Types.ObjectId, ref: "User", required: true}
     }],
-    selecciones: [{type: mongoose.Schema.Types.ObjectId, ref: "User", required: true}]
+    selecciones: [{type: mongoose.Schema.Types.ObjectId, ref: "User", required: true}],
+    recompensas: {type: String}
 });
 
 proyectoSchema.plugin(uniqueValidator);
