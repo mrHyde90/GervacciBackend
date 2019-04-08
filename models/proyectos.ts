@@ -3,7 +3,7 @@ import uniqueValidator from 'mongoose-unique-validator';
 
 export interface IProyecto extends Document{
     nombreProyecto: string;
-    empresa: {nombreEmpresaa: string, id: mongoose.Schema.Types.ObjectId};
+    empresa: {nombreEmpresa: string, id: mongoose.Schema.Types.ObjectId};
     descripcion: string;
     vacantes: Number;
     duracion: string;
