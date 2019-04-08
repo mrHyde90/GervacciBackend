@@ -35,8 +35,8 @@ exports.enviar_proyectos = async (req: Request, res: Response, next: Function) =
                 return {
                     _id: proyectoFind._id,
                     nombreProyecto: proyectoFind.nombreProyecto,
-                    descripcion: proyectoFind.descripcion,
-                    vacantes: proyectoFind.vacantes
+                    vacantes: proyectoFind.vacantes,
+                    nombreEmpresa: proyectoFind.empresa.nombreEmpresaa
                 }
             })
         });
