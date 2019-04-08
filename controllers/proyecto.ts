@@ -11,8 +11,8 @@ exports.create_proyect = async (req: Request, res: Response, next: Function) => 
             vacantes: parseInt(req.body.vacantes),
             duracion: req.body.duracion,
             empresa: {
-                nombreEmpresa: req.query.nombreEmpresa,
-                id: req.query.id
+                nombreEmpresa: req.body.nombreEmpresa,
+                id: req.body.id
             }
         });
 
